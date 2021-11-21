@@ -2,16 +2,18 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const mainRoute = require('./routes/mainRouter')
 
 const port = process.env.PORT || 3050;
 
-// Configuración
-app.use(express.static('src/public'));
 app.set('views', path.resolve(__dirname, './views'));
 
+// Configuración
+app.use(express.static('src/public'));
 // Template engine
 app.set('view engine', 'ejs');
 
+app.use('/', mainRoute);
 
 
 // Rutas
